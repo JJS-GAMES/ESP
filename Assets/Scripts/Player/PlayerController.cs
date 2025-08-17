@@ -16,21 +16,28 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [Header("Mouse Settings")]
+    [SerializeField] private Camera _playerCamera;
     [SerializeField] private float mouseSensitivity = 100f;
+
+    [Space]
+
+    [Header("Door interaction Settings")]
+    [SerializeField] private float _interactDistance = 5f;
 
     private float _xRotation = 0f;
 
     private Vector3 _velocity;
 
-    void Start()
+    private void Start()
     {
         _chrCtr = GetComponent<CharacterController>();
     }
 
-    void Update()
+    private void Update()
     {
         Move();
         MouseRotation();
+        FindDoorAndInteract();
     }
 
     private void Move()
@@ -63,8 +70,28 @@ public class PlayerController : MonoBehaviour
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-        Camera camera = Camera.main;
-        camera.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+        _playerCamera.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    public void FindDoorAndInteract()
+    {
+        Ray ray = new(_playerCamera.transform.position, _playerCamera.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
+        {
+            Transform hitTransform = hit.transform;
+
+            Door door = hitTransform.GetComponentInParent<Door>();
+
+            if (door != null)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    door.Interaction();
+                }
+
+                return;
+            }
+        }
     }
 }
