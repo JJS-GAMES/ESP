@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4bac796c53b114eb4999d615288bdb, type: 3}
+  m_Name: WoodSurface
+  m_EditorClassIdentifier: 
+  material: {fileID: 13400000, guid: 4e48f1bfc4db02f4d99d15402aa91027, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 9f16f1a47f7e8af43bde4f39657b3a6a, type: 3}
+  - {fileID: 8300000, guid: b48aa452ac944454c97aa2258241ddec, type: 3}
+  - {fileID: 8300000, guid: f4b410b3df3b1324abd88e123b60fafb, type: 3}
+  - {fileID: 8300000, guid: 96b7f670082a90c40a848f39d9b5da04, type: 3}
+  - {fileID: 8300000, guid: d0a81bcac5ce1fc48b4302a7d8fbebf4, type: 3}

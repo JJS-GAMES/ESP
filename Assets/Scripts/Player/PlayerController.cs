@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Door interaction Settings")]
     [SerializeField] private float _interactDistance = 5f;
+
+    private FootstepController _footsteps;
     public bool IsWalking { get; private set; }
     public bool IsRunning { get; private set; }
 
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _chrCtr = GetComponent<CharacterController>();
+        _footsteps = GetComponent<FootstepController>();
     }
 
     private void Update()
@@ -52,10 +55,13 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
 
-        IsWalking = move.magnitude > 0.1f;
-        IsRunning = Input.GetKey(KeyCode.LeftShift) && IsWalking;
+        bool isMoving = move.magnitude > 0.1f;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving;
 
-        float speed = IsRunning ? _runSpeed : _walkSpeed;
+        _footsteps.IsMoving = isMoving;
+        _footsteps.IsRunning = isRunning;
+
+        float speed = isRunning ? _runSpeed : _walkSpeed;
         _chrCtr.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
