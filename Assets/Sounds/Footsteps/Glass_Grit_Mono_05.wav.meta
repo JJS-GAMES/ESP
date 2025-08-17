@@ -1,5 +1,12 @@
 fileFormatVersion: 2
-guid: 4668524a5ab640d40a5a71b495a77c87
+guid: c4a21809e31911344bff0a58308ff320
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307682
+  packageName: Footsteps Mini Sound Pack
+  packageVersion: 1.0
+  assetPath: Assets/Footsteps Mini Sound Pack/Glass_Grit_Mono_05.wav
+  uploadId: 723109
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -11,7 +18,7 @@ AudioImporter:
     compressionFormat: 1
     quality: 1
     conversionMode: 0
-    preloadAudioData: 1
+    preloadAudioData: 0
   platformSettingOverrides:
     Standalone:
       serializedVersion: 2
@@ -21,7 +28,7 @@ AudioImporter:
       compressionFormat: 1
       quality: 0.5
       conversionMode: 0
-      preloadAudioData: 1
+      preloadAudioData: 0
   forceToMono: 0
   normalize: 1
   loadInBackground: 0

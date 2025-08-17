@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Door interaction Settings")]
     [SerializeField] private float _interactDistance = 5f;
+    public bool IsWalking { get; private set; }
+    public bool IsRunning { get; private set; }
 
     private float _xRotation = 0f;
 
@@ -50,7 +52,10 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
 
-        float speed = Input.GetKey(KeyCode.LeftShift) ? _runSpeed : _walkSpeed;
+        IsWalking = move.magnitude > 0.1f;
+        IsRunning = Input.GetKey(KeyCode.LeftShift) && IsWalking;
+
+        float speed = IsRunning ? _runSpeed : _walkSpeed;
         _chrCtr.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
         _velocity.y += _gravity * Time.deltaTime;
         _chrCtr.Move(_velocity * Time.deltaTime);
     }
+
 
     private void MouseRotation()
     {

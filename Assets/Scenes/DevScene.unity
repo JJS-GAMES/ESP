@@ -509,25 +509,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2857174194556551582, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6501485027428085737, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
-      propertyPath: _playerCamera
-      value: 
-      objectReference: {fileID: 1027032684}
-    - target: {fileID: 6501485027428085737, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
-      propertyPath: _interactDistance
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6596420655194582571, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4983606944728489863, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
@@ -3575,11 +3562,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978554704}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &1027032684 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 130848014083037699, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
-  m_PrefabInstance: {fileID: 107876497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1100900885
 GameObject:
   m_ObjectHideFlags: 0
