@@ -324,7 +324,7 @@ MonoBehaviour:
   _jumpHeight: 1
   _gravity: -20
   _playerCamera: {fileID: 130848014083037699}
-  mouseSensitivity: 100
+  _mouseSensitivity: 100
   _interactDistance: 5
 --- !u!114 &7790727687123906911
 MonoBehaviour:
@@ -338,14 +338,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59201ce296abda64ab033eca76ae4df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 3493818738169507433}
   _audioSource: {fileID: 2857174194556551582}
-  _footstepClips:
-  - {fileID: 8300000, guid: 898de3fd924842444aecab24c9ed9c3b, type: 3}
-  - {fileID: 8300000, guid: 4668524a5ab640d40a5a71b495a77c87, type: 3}
+  _volume: 0.5
+  _defaultSurface: {fileID: 11400000, guid: f3416532e32f6e04292ff1a7042b7291, type: 2}
+  _surfaces:
+  - {fileID: 11400000, guid: f3416532e32f6e04292ff1a7042b7291, type: 2}
+  - {fileID: 11400000, guid: 19c44ad01da11ac42a6ebbe6299c78ae, type: 2}
+  - {fileID: 11400000, guid: 972b30de0b31ae24da92d13c286c09c0, type: 2}
+  - {fileID: 11400000, guid: fd4f15b1bf59182499e7abf1667131ba, type: 2}
   _walkStepInterval: 0.6
   _runStepInterval: 0.35
-  _volume: 0.5
 --- !u!33 &4459410968718016071
 MeshFilter:
   m_ObjectHideFlags: 0

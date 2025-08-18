@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Mouse Settings")]
     [SerializeField] private Camera _playerCamera;
-    [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private float _mouseSensitivity = 100f;
 
     [Space]
 
@@ -76,8 +76,8 @@ public class PlayerController : MonoBehaviour
 
     private void MouseRotation()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity * Time.deltaTime;
 
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);

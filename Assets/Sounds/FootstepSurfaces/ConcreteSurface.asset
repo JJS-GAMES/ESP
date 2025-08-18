@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4bac796c53b114eb4999d615288bdb, type: 3}
   m_Name: ConcreteSurface
   m_EditorClassIdentifier: 
-  material: {fileID: 13400000, guid: e52fee0cbabf0b64b8d4caf6fb977c2a, type: 2}
-  clips:
-  - {fileID: 8300000, guid: 9dbc8977807367a4e9c4f225be06ee98, type: 3}
-  - {fileID: 8300000, guid: 118bb367fbbf0ed41b333d8e73e2db72, type: 3}
-  - {fileID: 8300000, guid: 6d55ae8d99786374393be261d62d694e, type: 3}
-  - {fileID: 8300000, guid: 01fc8d4fe8daac14788186b454fd5330, type: 3}
-  - {fileID: 8300000, guid: 666dd43c32cbbfa49a9bf0bd519027e4, type: 3}
+  Material: {fileID: 13400000, guid: e52fee0cbabf0b64b8d4caf6fb977c2a, type: 2}
+  Clips:
+  - {fileID: 8300000, guid: a8b6c6ef7c6c2bc438272bdf63c5210b, type: 3}
+  - {fileID: 8300000, guid: ca9147c51084cee4a8772c819f2be558, type: 3}
+  - {fileID: 8300000, guid: 7a53b4d7727df5741b2523095eb42fa2, type: 3}
+  - {fileID: 8300000, guid: 7b6953e2314707c4691513bdb499d40c, type: 3}
+  - {fileID: 8300000, guid: d8989f6005bbbf1478fea82bc78a3806, type: 3}

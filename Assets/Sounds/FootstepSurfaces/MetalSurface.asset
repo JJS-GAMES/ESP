@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4bac796c53b114eb4999d615288bdb, type: 3}
   m_Name: MetalSurface
   m_EditorClassIdentifier: 
-  material: {fileID: 13400000, guid: d8d9fdc7b8abbab4d85d166efae012bc, type: 2}
-  clips:
+  Material: {fileID: 13400000, guid: d8d9fdc7b8abbab4d85d166efae012bc, type: 2}
+  Clips:
   - {fileID: 8300000, guid: 1341e2b988f0e0f4a8a7f0e194d9d551, type: 3}
   - {fileID: 8300000, guid: 2045330c19005fa49a1047588f3a222e, type: 3}
   - {fileID: 8300000, guid: c9cb8cc7e7af5af4780de2147fba30c1, type: 3}

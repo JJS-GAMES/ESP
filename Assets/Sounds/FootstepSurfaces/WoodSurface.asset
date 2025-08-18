@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4bac796c53b114eb4999d615288bdb, type: 3}
   m_Name: WoodSurface
   m_EditorClassIdentifier: 
-  material: {fileID: 13400000, guid: 4e48f1bfc4db02f4d99d15402aa91027, type: 2}
-  clips:
+  Material: {fileID: 13400000, guid: 4e48f1bfc4db02f4d99d15402aa91027, type: 2}
+  Clips:
   - {fileID: 8300000, guid: 9f16f1a47f7e8af43bde4f39657b3a6a, type: 3}
   - {fileID: 8300000, guid: b48aa452ac944454c97aa2258241ddec, type: 3}
   - {fileID: 8300000, guid: f4b410b3df3b1324abd88e123b60fafb, type: 3}

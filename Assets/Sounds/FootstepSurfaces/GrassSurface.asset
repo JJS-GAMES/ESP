@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4bac796c53b114eb4999d615288bdb, type: 3}
   m_Name: GrassSurface
   m_EditorClassIdentifier: 
-  material: {fileID: 13400000, guid: 073e3c85e03631043bc8c4c08c6f984c, type: 2}
-  clips:
+  Material: {fileID: 13400000, guid: 073e3c85e03631043bc8c4c08c6f984c, type: 2}
+  Clips:
   - {fileID: 8300000, guid: bd7d6d8f9efe64749a3be0dd47d8519c, type: 3}
   - {fileID: 8300000, guid: 4d33ee953c941e2449b0f325e128f799, type: 3}
   - {fileID: 8300000, guid: de812b515a5c45d4fa030cf39e846e84, type: 3}
