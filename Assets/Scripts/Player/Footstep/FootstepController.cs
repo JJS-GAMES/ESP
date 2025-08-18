@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource), typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 public class FootstepController : MonoBehaviour
 {
     [Header("Audio")]
@@ -22,7 +22,6 @@ public class FootstepController : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
-        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()

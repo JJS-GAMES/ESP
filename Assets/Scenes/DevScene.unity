@@ -680,7 +680,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2242441422290316159, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -915,6 +916,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!4 &157516246 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1921139102353666777, guid: e012b87d9a4a71747bf1eceb93875c25, type: 3}
+  m_PrefabInstance: {fileID: 107876497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163169719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7564,6 +7570,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8981560398190670100, guid: ae1df8d0244ac8e42895b08d45f67f86, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e88a93148f69984e968ecc92408960f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8866,18 +8876,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 684449216}
     m_Modifications:
-    - target: {fileID: 1387895856964838840, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 4803170236292539907, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: m_Name
-      value: ArcWall
+      value: GatesWall
       objectReference: {fileID: 0}
-    - target: {fileID: 4803170236292539907, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
+    - target: {fileID: 7591869371695475371, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 157516246}
     - target: {fileID: 8904069258420780857, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.51
