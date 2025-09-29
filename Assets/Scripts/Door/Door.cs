@@ -16,7 +16,6 @@ public class Door : MonoBehaviour
     }
     public void Interaction()
     {
-
         _isOpen = !_isOpen;
         float angle = _isOpen ? _openAngle : 0f;
 

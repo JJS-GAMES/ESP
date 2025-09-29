@@ -5,14 +5,17 @@ public class Gates : MonoBehaviour
     [SerializeField] private GameObject _body;
 
     [SerializeField] private float _openOffset = 10f;
-    [SerializeField] private float _openSpeed = 2f;
-    [SerializeField] private float _detectDistance = 10f;
+    [SerializeField] private float _speed = 2f;
     [SerializeField] private Transform _player;
-
 
     private Vector3 _closedPosition;
     private Vector3 _openPosition;
     private Vector3 _targetPosition;
+
+    private bool _isOpen;
+
+    public bool IsOpen => _isOpen;
+    public float Speed => _speed;
 
     private void Start()
     {
@@ -23,22 +26,24 @@ public class Gates : MonoBehaviour
 
     private void Update()
     {
-        float dist = Vector3.Distance(_player.position, transform.position);
-
-        if (dist <= _detectDistance)
-            _targetPosition = _openPosition;
-        else
-            _targetPosition = _closedPosition;
-
-        OpenGates();
-    }
-
-    private void OpenGates()
-    {
         _body.transform.position = Vector3.MoveTowards(
             _body.transform.position,
             _targetPosition,
-            _openSpeed * Time.deltaTime
+            _speed * Time.deltaTime
         );
+    }
+
+    public void Open()
+    {
+        _targetPosition = _openPosition;
+
+        _isOpen = true;
+    }
+
+    public void Close()
+    {
+        _targetPosition = _closedPosition;
+
+        _isOpen = false;
     }
 }
