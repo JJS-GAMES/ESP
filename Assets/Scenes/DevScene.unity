@@ -8950,9 +8950,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 684449216}
     m_Modifications:
+    - target: {fileID: 2260939353007322185, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260939353007322185, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.132
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745894822250655992, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745894822250655992, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745894822250655992, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.129
+      objectReference: {fileID: 0}
     - target: {fileID: 4803170236292539907, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: m_Name
       value: GatesWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804553878088471015, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804553878088471015, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044829253176255869, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044829253176255869, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Color.b
+      value: 0.23409165
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044829253176255869, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2028302
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044829253176255869, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044829253176255869, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: m_Intensity
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7591869371695475371, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: _player
