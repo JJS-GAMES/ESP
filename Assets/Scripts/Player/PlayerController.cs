@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
