@@ -6,6 +6,8 @@ public class FootstepController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField, Range(0f, 1f)] private float _volume = 0.5f;
+
+    [Header("Surfaces")]
     [SerializeField] private FootstepMaterialSurface _defaultSurface;
     [SerializeField] private FootstepMaterialSurface[] _surfaces;
 

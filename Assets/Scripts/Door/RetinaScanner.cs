@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class RetinaScanner : MonoBehaviour
 {
     [SerializeField] private Gates _gates;
-    [SerializeField] private float _interactionDuration = 5f;
+
+    [SerializeField, Tooltip("ƒистанци€ до сбрасывани€ сканировани€(если бы отойдем от сканера, во врем€ сканировани€ сечатки)")] private float _cancelDistance = 3f;
+
+    [Space, SerializeField] private float _interactionDuration = 5f;
     [SerializeField] private float _resetDuration = 5f;
     [SerializeField] private float _errorDuration = 2f;
 
@@ -40,38 +43,39 @@ public class RetinaScanner : MonoBehaviour
 
     [Space, SerializeField] private GameObject _errorPanel;
 
+    private Coroutine _interactionCoroutine;
+    private Transform _player;
     private bool _isScanning = false;
+    private bool _isInteraction = false;
 
     private void Start()
     {
-        _scanningImage.fillAmount = 0f;
-
-        _scannerUI?.gameObject.SetActive(true);
-
-        _welcomeText?.transform.parent?.gameObject.SetActive(true);
-        _welcomeText?.gameObject.SetActive(true);
-        _requiredText?.gameObject.SetActive(true);
-
-        _scanningImage?.transform.parent?.gameObject.SetActive(true);
-        _scanningImage?.gameObject.SetActive(false);
-        _scanningText?.gameObject.SetActive(false);
-
-        _waitingText?.transform.parent?.gameObject.SetActive(true);
-        _waitingText?.gameObject.SetActive(false);
-
-        _completedText?.transform.parent?.gameObject.SetActive(true);
-        _completedText?.gameObject.SetActive(false);
-        _openingText?.gameObject.SetActive(false);
-        _timerText?.gameObject.SetActive(false);
-
-        _errorUI?.gameObject.SetActive(false);
-
-        _errorPanel?.transform.parent?.gameObject.SetActive(true);
-        _errorPanel?.gameObject.SetActive(false);
+        SetUIDefault();
     }
-    public IEnumerator Interaction()
+    private void Update()
     {
-        if (_gates.IsOpen || _isScanning)
+        if (_isScanning && _player != null)
+        {
+            float dist = Vector3.Distance(transform.position, _player.position);
+            if (dist > _cancelDistance)
+            {
+                StopScanning();
+            }
+        }
+    }
+
+    public void BeginScanning(Transform player)
+    {
+        if (_interactionCoroutine == null && !_isInteraction && !_isScanning)
+        {
+            _player = player;
+            _interactionCoroutine = StartCoroutine(Interaction());
+        }
+    }
+
+    private IEnumerator Interaction()
+    {
+        if (_gates.IsOpen || _isScanning || _isInteraction)
         {
             _scannerUI?.gameObject.SetActive(false);
 
@@ -81,12 +85,20 @@ public class RetinaScanner : MonoBehaviour
             yield return new WaitForSeconds(_errorDuration);
 
             _scannerUI?.gameObject.SetActive(true);
-
             _errorUI?.gameObject.SetActive(false);
             _errorPanel?.gameObject.SetActive(false);
+
+            if (!_isScanning && !_isInteraction)
+            {
+                SetUIDefault() ;
+                _interactionCoroutine = null;
+                yield break;
+            }
         }
+
         else
         {
+            _isInteraction = true;
             _isScanning = true;
 
             float elapsed = 0f;
@@ -110,6 +122,8 @@ public class RetinaScanner : MonoBehaviour
 
             _scanningImage?.gameObject.SetActive(false);
             _scanningText?.gameObject.SetActive(false);
+
+            _isScanning = false;
 
             _completedText?.gameObject.SetActive(true);
             _openingText?.gameObject.SetActive(true);
@@ -149,7 +163,50 @@ public class RetinaScanner : MonoBehaviour
             _welcomeText?.gameObject.SetActive(true);
             _requiredText?.gameObject.SetActive(true);
 
-            _isScanning = false;
+            _isInteraction = false;
+
+            _interactionCoroutine = null;
         }
+    }
+
+    public void StopScanning()
+    {
+        if (_interactionCoroutine != null)
+        {
+            StopCoroutine(_interactionCoroutine);
+            _interactionCoroutine = null;
+            _isScanning = false;
+            _isInteraction = false;
+
+            SetUIDefault();
+        }
+    }
+
+    private void SetUIDefault()
+    {
+        _scanningImage.fillAmount = 0f;
+
+        _scannerUI?.gameObject.SetActive(true);
+
+        _welcomeText?.transform.parent?.gameObject.SetActive(true);
+        _welcomeText?.gameObject.SetActive(true);
+        _requiredText?.gameObject.SetActive(true);
+
+        _scanningImage?.transform.parent?.gameObject.SetActive(true);
+        _scanningImage?.gameObject.SetActive(false);
+        _scanningText?.gameObject.SetActive(false);
+
+        _waitingText?.transform.parent?.gameObject.SetActive(true);
+        _waitingText?.gameObject.SetActive(false);
+
+        _completedText?.transform.parent?.gameObject.SetActive(true);
+        _completedText?.gameObject.SetActive(false);
+        _openingText?.gameObject.SetActive(false);
+        _timerText?.gameObject.SetActive(false);
+
+        _errorUI?.gameObject.SetActive(false);
+
+        _errorPanel?.transform.parent?.gameObject.SetActive(true);
+        _errorPanel?.gameObject.SetActive(false);
     }
 }

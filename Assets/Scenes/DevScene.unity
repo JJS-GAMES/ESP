@@ -8950,6 +8950,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 684449216}
     m_Modifications:
+    - target: {fileID: 1775079433716161870, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: _cancelDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2260939353007322185, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.99
@@ -8973,6 +8977,10 @@ PrefabInstance:
     - target: {fileID: 4803170236292539907, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: m_Name
       value: GatesWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052738863973177855, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
+      propertyPath: _cancelDistance
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6804553878088471015, guid: fb59f37d4f6690441b9bc9970c584b96, type: 3}
       propertyPath: m_Range

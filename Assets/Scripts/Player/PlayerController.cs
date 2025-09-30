@@ -95,23 +95,17 @@ public class PlayerController : MonoBehaviour
             Transform hitTransform = hit.transform;
 
             Door door = hitTransform.GetComponentInParent<Door>();
-            RetinaScanner retina  = hitTransform.GetComponentInParent<RetinaScanner>();
+            RetinaScanner retina = hitTransform.GetComponentInParent<RetinaScanner>();
 
-            if (door != null)
+            if (door != null && Input.GetKeyDown(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    door.Interaction();
-                }
+                door.Interaction();
 
                 return;
             }
-            else if (retina != null)
+            else if (retina != null && Input.GetKeyDown(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    StartCoroutine(retina.Interaction());
-                }
+                retina.BeginScanning(transform);
 
                 return;
             }
