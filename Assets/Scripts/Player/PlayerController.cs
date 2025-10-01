@@ -25,12 +25,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _interactDistance = 5f;
 
     private FootstepController _footsteps;
+    public float InteractDistance => _interactDistance;
     public bool IsWalking { get; private set; }
     public bool IsRunning { get; private set; }
 
     private float _xRotation = 0f;
 
     private Vector3 _velocity;
+
 
     private void Start()
     {
@@ -94,7 +96,7 @@ public class PlayerController : MonoBehaviour
             Transform hitTransform = hit.transform;
 
             Door door = hitTransform.GetComponentInParent<Door>();
-            RetinaScanner retina = hitTransform.GetComponentInParent<RetinaScanner>();
+            Scanner scanner = hitTransform.GetComponentInParent<Scanner>();
 
             if (door != null && Input.GetKeyDown(KeyCode.E))
             {
@@ -102,9 +104,9 @@ public class PlayerController : MonoBehaviour
 
                 return;
             }
-            else if (retina != null && Input.GetKeyDown(KeyCode.E))
+            else if (scanner != null && Input.GetKeyDown(KeyCode.E))
             {
-                retina.BeginScanning(transform);
+                scanner.BeginScanning(transform);
 
                 return;
             }

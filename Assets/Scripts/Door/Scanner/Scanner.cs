@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RetinaScanner : MonoBehaviour
+public class Scanner : MonoBehaviour
 {
     [SerializeField] private Gates _gates;
 
@@ -13,6 +13,8 @@ public class RetinaScanner : MonoBehaviour
     [SerializeField] private float _resetDuration = 5f;
     [SerializeField] private float _errorDuration = 2f;
 
+    [Header("-------------------------")]
+
     [Header("UI")]
     [SerializeField] private Canvas _canvas;
 
@@ -20,28 +22,34 @@ public class RetinaScanner : MonoBehaviour
     [SerializeField] private GameObject _errorUI;
 
     [Header("Welcome UI")]
-
     [Space, SerializeField] private TextMeshProUGUI _welcomeText;
     [SerializeField] private TextMeshProUGUI _requiredText;
 
     [Header("Scanning UI")]
-
     [Space, SerializeField] private Image _scanningImage;
     [SerializeField] private TextMeshProUGUI _scanningText;
 
     [Header("Completed UI")]
-
     [Space, SerializeField] private TextMeshProUGUI _completedText;
     [SerializeField] private TextMeshProUGUI _openingText;
     [SerializeField] private TextMeshProUGUI _timerText;
 
     [Header("Waiting UI")]
-
     [Space, SerializeField] private TextMeshProUGUI _waitingText;
 
     [Header("Error UI")]
-
     [Space, SerializeField] private GameObject _errorPanel;
+
+    [Header("-------------------------")]
+    [Header("Audio")]
+    [Space, SerializeField] private ScannerAudioController _scannerAudioController;
+    [SerializeField] private float _volume = 0.8f;
+
+    [Header("Sounds")]
+    [Space, SerializeField] private AudioClip _completedMessageClip;
+    [SerializeField] private AudioClip _errorMessageClip;
+
+    [SerializeField] private AudioClip _scanningMessageClip;
 
     private Coroutine _interactionCoroutine;
     private Transform _player;
@@ -50,6 +58,8 @@ public class RetinaScanner : MonoBehaviour
 
     private void Start()
     {
+        if (_scannerAudioController == null) _scannerAudioController = GetComponentInChildren<ScannerAudioController>();
+        else _scannerAudioController.Init(_volume);
         SetUIDefault();
     }
     private void Update()
@@ -82,6 +92,11 @@ public class RetinaScanner : MonoBehaviour
             _errorPanel?.gameObject.SetActive(true);
             _errorUI?.gameObject.SetActive(true);
 
+            if (_errorMessageClip != null)
+            {
+                _scannerAudioController?.PlaySoundOneShot(_errorMessageClip);
+            }
+
             yield return new WaitForSeconds(_errorDuration);
 
             _scannerUI?.gameObject.SetActive(true);
@@ -91,17 +106,14 @@ public class RetinaScanner : MonoBehaviour
             if (!_isScanning && !_isInteraction)
             {
                 SetUIDefault() ;
-                _interactionCoroutine = null;
+                StopScanning() ;
                 yield break;
             }
         }
-
         else
         {
             _isInteraction = true;
             _isScanning = true;
-
-            float elapsed = 0f;
 
             _welcomeText?.gameObject.SetActive(false);
             _requiredText?.gameObject.SetActive(false);
@@ -109,6 +121,12 @@ public class RetinaScanner : MonoBehaviour
             _scanningImage?.gameObject.SetActive(true);
             _scanningText?.gameObject.SetActive(true);
 
+            if (_scanningMessageClip != null)
+            {
+                _scannerAudioController?.PlayLoopSound(_scanningMessageClip);
+            }
+
+            float elapsed = 0f;
             while (elapsed < _interactionDuration)
             {
                 elapsed += Time.deltaTime;
@@ -123,7 +141,14 @@ public class RetinaScanner : MonoBehaviour
             _scanningImage?.gameObject.SetActive(false);
             _scanningText?.gameObject.SetActive(false);
 
+            _scannerAudioController?.StopLoopSound();
+
             _isScanning = false;
+
+            if (_completedMessageClip != null)
+            {
+                _scannerAudioController?.PlaySoundOneShot(_completedMessageClip);
+            }
 
             _completedText?.gameObject.SetActive(true);
             _openingText?.gameObject.SetActive(true);
@@ -157,6 +182,11 @@ public class RetinaScanner : MonoBehaviour
             _waitingText?.gameObject.SetActive(false);
             _completedText?.gameObject.SetActive(true);
 
+            if (_completedMessageClip != null)
+            {
+                _scannerAudioController?.PlaySoundOneShot(_completedMessageClip);
+            }
+
             yield return new WaitForSeconds(2f);
 
             _completedText?.gameObject.SetActive(false);
@@ -174,6 +204,7 @@ public class RetinaScanner : MonoBehaviour
         if (_interactionCoroutine != null)
         {
             StopCoroutine(_interactionCoroutine);
+            _scannerAudioController?.StopLoopSound();
             _interactionCoroutine = null;
             _isScanning = false;
             _isInteraction = false;
