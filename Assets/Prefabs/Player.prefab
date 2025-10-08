@@ -190,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7448222457654868213
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 4062145162255755873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0.411, z: 0.7}
+  m_LocalPosition: {x: 0.65, y: 0.5, z: 0.304}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -219,8 +219,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestWeapon
   _transitionSpeed: 10
-  _fusePosition: {x: 0, y: 0.25, z: 0.7}
+  _defaultPosition: {x: 0.65, y: 0.5, z: 0.304}
+  _defaultRotation: {x: 0, y: 0, z: 0}
+  _fusePosition: {x: 0, y: 0.25, z: 0.65}
   _fuseRotation: {x: 20, y: -90, z: 0}
+  _onUnequipPosition: {x: 0.337, y: 0, z: -0.512}
+  _onUnequipRotation: {x: -90, y: 0, z: 0}
 --- !u!33 &2421815396244484725
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -314,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8228374997790713628
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 4431426525694102100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0.411, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -343,8 +347,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestWeapon
   _transitionSpeed: 1
+  _defaultPosition: {x: 0, y: 0, z: 0}
+  _defaultRotation: {x: 0, y: 0, z: 0}
   _fusePosition: {x: 0, y: 0, z: 0}
   _fuseRotation: {x: 0, y: 0, z: 0}
+  _onUnequipPosition: {x: 0, y: 0, z: 0}
+  _onUnequipRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &4983606944728489863
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +693,7 @@ MonoBehaviour:
   - {fileID: 5194409743173191294}
   - {fileID: 6901478545868799740}
   - {fileID: 4002775551575581863}
+  _switchCooldown: 0.3
 --- !u!1 &7473217437987245307
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4184208608658695109
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +723,7 @@ Transform:
   m_GameObject: {fileID: 7473217437987245307}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0.411, z: 0.7}
+  m_LocalPosition: {x: 0.65, y: 0.5, z: 0.304}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -733,8 +742,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestWeapon
   _transitionSpeed: 10
-  _fusePosition: {x: 0, y: 0.25, z: 0.7}
+  _defaultPosition: {x: 0.65, y: 0.5, z: 0.304}
+  _defaultRotation: {x: 0, y: 0, z: 0}
+  _fusePosition: {x: 0, y: 0.25, z: 0.5}
   _fuseRotation: {x: 20, y: -90, z: 0}
+  _onUnequipPosition: {x: 0.65, y: -0.121, z: 0.018}
+  _onUnequipRotation: {x: 90, y: 0, z: 0}
 --- !u!33 &5728683931708028945
 MeshFilter:
   m_ObjectHideFlags: 0
