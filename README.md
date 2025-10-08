@@ -1,7 +1,7 @@
 #🧩 Experimental Systems Playground
 
 This repository serves as a **personal sandbox** for experiments and coding practice.  
-Here I implement various **ideas, gameplay systems, and mechanics** that are not related to any of my team’s official projects.  
+Here we implement various **ideas, gameplay systems, and mechanics** that are not related to any of my team’s official projects.  
 
 It’s a **mix of different prototypes**, custom systems, and homemade 3D models — all created to practice and improve my Unity development skills.
 
