@@ -1,4 +1,4 @@
-#🧩 Experimental Systems Playground
+#🧩Experimental Systems Playground
 
 This repository serves as a **personal sandbox** for experiments and coding practice.  
 Here we implement various **ideas, gameplay systems, and mechanics** that are not related to any of my team’s official projects.  
