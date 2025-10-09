@@ -7,15 +7,20 @@ public class Scanner : MonoBehaviour
 {
     [SerializeField] private Gates _gates;
 
-    [SerializeField, Tooltip("ƒистанци€ до сбрасывани€ сканировани€(если бы отойдем от сканера, во врем€ сканировани€ сечатки)")] private float _cancelDistance = 3f;
+    [SerializeField, Tooltip("Usage distance")] 
+    private float _interactDistance = 5f;
+    [SerializeField, Tooltip("Scan time")] 
+    private float _interactDuration = 5f;
 
-    [Space, SerializeField] private float _interactionDuration = 5f;
-    [SerializeField] private float _resetDuration = 5f;
-    [SerializeField] private float _errorDuration = 2f;
+    [Space, SerializeField, Tooltip("The distance to the scan reset (if we move away from the scanner while scanning the print)")] 
+    private float _cancelDistance = 3f;
+    [SerializeField, Tooltip("The delay time of the gate and its closure")] 
+    private float _resetDuration = 5f;
+    [SerializeField, Tooltip("Time when the error label was displayed")] 
+    private float _errorDuration = 2f;
 
     [Header("-------------------------")]
 
-    [Header("UI")]
     [SerializeField] private Canvas _canvas;
 
     [Space, SerializeField] private GameObject _scannerUI;
@@ -72,6 +77,8 @@ public class Scanner : MonoBehaviour
                 StopScanning();
             }
         }
+
+        FindScanner();
     }
 
     public void BeginScanning(Transform player)
@@ -127,10 +134,10 @@ public class Scanner : MonoBehaviour
             }
 
             float elapsed = 0f;
-            while (elapsed < _interactionDuration)
+            while (elapsed < _interactDuration)
             {
                 elapsed += Time.deltaTime;
-                float t = elapsed / _interactionDuration;
+                float t = elapsed / _interactDuration;
                 _scanningImage.fillAmount = Mathf.SmoothStep(0f, 1f, t);
                 yield return null;
             }
@@ -239,5 +246,23 @@ public class Scanner : MonoBehaviour
 
         _errorPanel?.transform.parent?.gameObject.SetActive(true);
         _errorPanel?.gameObject.SetActive(false);
+    }
+
+    public void FindScanner()
+    {
+        Ray ray = new(Camera.main.transform.position, Camera.main.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
+        {
+            Transform hitTransform = hit.transform;
+
+            Scanner scanner = hitTransform.GetComponentInParent<Scanner>();
+
+            if (scanner != null && Input.GetKeyDown(KeyCode.E))
+            {
+                scanner.BeginScanning(transform);
+
+                return;
+            }
+        }
     }
 }

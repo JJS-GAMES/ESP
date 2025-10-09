@@ -1,33 +1,74 @@
 using UnityEngine;
+
 public class Door : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private Collider _collider;
-    [SerializeField] private float _openAngle = 90f;
-    [SerializeField] private float _openSpeed = 10f;
+    [Space, SerializeField] private float _interactDistance = 5f;
+    [SerializeField] private float _maxOpenAngle = 90f;
+    [SerializeField] private float _openSensitivity = 3f;
 
-    private bool _isOpen;
+    private bool _isInteracting;
+    private Transform _playerCamera;
+    private float _currentAngle;
 
     private Quaternion _closedRotation;
-    private Quaternion _targetRotation;
+
     private void Start()
     {
+        _playerCamera = Camera.main.transform;
         _closedRotation = transform.rotation;
-        _targetRotation = _closedRotation;
     }
-    public void Interaction()
-    {
-        _isOpen = !_isOpen;
-        float angle = _isOpen ? _openAngle : 0f;
 
-        _targetRotation = Quaternion.Euler(0, angle, 0) * _closedRotation;
-    }
     private void Update()
     {
-        if (transform.rotation != _targetRotation)
+        HandleInteraction();
+        RotateDoor();
+    }
+
+    private void HandleInteraction()
+    {
+        Ray ray = new Ray(_playerCamera.position, _playerCamera.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
         {
-            transform.rotation = Quaternion.LerpUnclamped(transform.rotation, _targetRotation, Time.deltaTime * _openSpeed);
-            _collider.isTrigger = true;
+            Door door = hit.transform.GetComponentInParent<Door>();
+
+            if (door == this)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    _isInteracting = true;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+
+                if (_isInteracting && Input.GetKey(KeyCode.E))
+                {
+                    Vector3 toPlayer = _playerCamera.position - transform.position;
+                    float side = Vector3.Dot(transform.right, toPlayer);
+
+                    float mouseX = Input.GetAxis("Mouse X");
+
+                    if (side < 0)
+                        mouseX = -mouseX;
+
+                    _currentAngle += mouseX * _openSensitivity;
+                    _currentAngle = Mathf.Clamp(_currentAngle, 0f, _maxOpenAngle);
+                }
+
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    _isInteracting = false;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+            }
         }
-        else _collider.isTrigger = false;
+    }
+
+
+    private void RotateDoor()
+    {
+        Quaternion targetRotation = _closedRotation * Quaternion.Euler(0, _currentAngle, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
     }
 }

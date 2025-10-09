@@ -19,13 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private float _mouseSensitivity = 100f;
 
-    [Space]
-
-    [Header("Door interaction Settings")]
-    [SerializeField] private float _interactDistance = 5f;
-
     private FootstepController _footsteps;
-    public float InteractDistance => _interactDistance;
     public bool IsWalking { get; private set; }
     public bool IsRunning { get; private set; }
 
@@ -44,7 +38,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         MouseRotation();
-        FindDoorAndInteract();
     }
 
     private void Move()
@@ -86,30 +79,5 @@ public class PlayerController : MonoBehaviour
 
         _playerCamera.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
-    }
-
-    public void FindDoorAndInteract()
-    {
-        Ray ray = new(_playerCamera.transform.position, _playerCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
-        {
-            Transform hitTransform = hit.transform;
-
-            Door door = hitTransform.GetComponentInParent<Door>();
-            Scanner scanner = hitTransform.GetComponentInParent<Scanner>();
-
-            if (door != null && Input.GetKeyDown(KeyCode.E))
-            {
-                door.Interaction();
-
-                return;
-            }
-            else if (scanner != null && Input.GetKeyDown(KeyCode.E))
-            {
-                scanner.BeginScanning(transform);
-
-                return;
-            }
-        }
     }
 }

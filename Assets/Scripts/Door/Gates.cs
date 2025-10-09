@@ -6,7 +6,6 @@ public class Gates : MonoBehaviour
 
     [SerializeField] private float _openOffset = 10f;
     [SerializeField] private float _speed = 2f;
-    [SerializeField] private Transform _player;
 
     private Vector3 _closedPosition;
     private Vector3 _openPosition;
