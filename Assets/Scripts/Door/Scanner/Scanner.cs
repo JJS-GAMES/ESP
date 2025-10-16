@@ -57,7 +57,6 @@ public class Scanner : MonoBehaviour
     [SerializeField] private AudioClip _scanningMessageClip;
 
     private Coroutine _interactionCoroutine;
-    private Transform _player;
     private bool _isScanning = false;
     private bool _isInteraction = false;
 
@@ -69,23 +68,13 @@ public class Scanner : MonoBehaviour
     }
     private void Update()
     {
-        if (_isScanning && _player != null)
-        {
-            float dist = Vector3.Distance(transform.position, _player.position);
-            if (dist > _cancelDistance)
-            {
-                StopScanning();
-            }
-        }
-
         FindScanner();
     }
 
-    public void BeginScanning(Transform player)
+    public void BeginScanning()
     {
         if (_interactionCoroutine == null && !_isInteraction && !_isScanning)
         {
-            _player = player;
             _interactionCoroutine = StartCoroutine(Interaction());
         }
     }
@@ -259,10 +248,14 @@ public class Scanner : MonoBehaviour
 
             if (scanner != null && Input.GetKeyDown(KeyCode.E))
             {
-                scanner.BeginScanning(transform);
+                scanner.BeginScanning();
 
                 return;
             }
+        }
+        else if(_isScanning)
+        {
+            StopScanning();
         }
     }
 }

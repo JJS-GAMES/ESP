@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class TestSecondWeapon : BaseWeapon
 {
-    [Space, SerializeField] private int _ammo = 30;
-    [SerializeField] private int _maxAmmo = 30;
+    [SerializeField] private Light _flashlight;
+    private bool _isOn;
 
     private void Update()
     {
-        if(!_isActive)return;
+        if (!_isActive)
+        {
+            _flashlight.gameObject.SetActive(false);
+            return;
+        }
 
         if(Input.GetMouseButtonDown(0)) Fire();
         if(Input.GetKeyDown(KeyCode.R)) Reload();
@@ -15,21 +19,13 @@ public class TestSecondWeapon : BaseWeapon
     }
     public override void Fire()
     {
-        if (_isFuse) return;
-        if(_ammo <= 0)
-        {
-            Debug.Log("Патроны закончились!");
-            return;
-        }
+        _isOn = !_isOn;
 
-        _ammo--;
-
-        Debug.Log($"Пиу! Патрон осталось: {_ammo}");
+        _flashlight.gameObject.SetActive(_isOn);
     }
 
     public override void Reload()
     {
-        _ammo = _maxAmmo;
-        Debug.Log("Перезарядка!");
+        // Flashlight doesn't use ammo, so reloading is unnecessary.
     }
 }
